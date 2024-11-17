@@ -12,6 +12,10 @@ function ChatPage(){
     const[status,setStatus]=useState()
 
     useEffect(()=>{
+        axios.put(url+'updateuser/'+id,{status:"online"})
+    },[status])
+
+    useEffect(()=>{
         axios.get(`${url}chats/${user.id}/${user2.id}`)
         .then(data=>{setOldMsgArray(data.data)})
         .catch(er=>alert(er.message))
