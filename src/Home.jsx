@@ -14,13 +14,13 @@ function Home(){
 
     useEffect(()=>{
         axios.get(url+"users/"+id).then((data)=>{setUser(data.data)})
-        axios.put(url+'updateuser/'+id,{status:"online"})
     },[])
 
     useEffect(()=>{
         axios.get(url+'userlist/'+id)
         .then(data=>setLastUsers(data.data))
         .catch(er=>alert(er))
+        axios.put(url+'updateuser/'+id,{status:"online"})
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[lastUsers])
 
