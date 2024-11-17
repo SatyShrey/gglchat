@@ -12,7 +12,7 @@ function ChatPage(){
     const[status,setStatus]=useState()
 
     useEffect(()=>{
-        axios.put(url+'updateuser/'+id,{status:"online"})
+        axios.put(url+'updateuser/'+user.id,{status:"online"})
     },[status])
 
     useEffect(()=>{
