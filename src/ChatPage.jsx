@@ -14,9 +14,8 @@ function ChatPage(){
     useEffect(()=>{
         axios.get(`${url}chats/${user.uid}/${user2.uid}`)
         .then(data=>{if(data.data){setOldMsgArray(data.data)}})
-        .then(()=>myRef.current.scrollIntoView())
         .catch(er=>alert(er.message))
-
+        myRef.current.scrollIntoView()
         axios.get(url+"users/"+user2.uid).then(data=>setStatus(data.data.status))
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[oldMsgArray])
