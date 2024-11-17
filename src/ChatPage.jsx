@@ -15,12 +15,11 @@ function ChatPage(){
         axios.get(`${url}chats/${user.id}/${user2.id}`)
         .then(data=>{setOldMsgArray(data.data)})
         .catch(er=>alert(er.message))
-
-        axios.get(url+"users/"+user2.id).then(data=>setStatus(data.data.status))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[oldMsgArray,status])
+    },[oldMsgArray])
 
     useEffect(()=>{myRef.current.scrollIntoView()},[])
+    useEffect(()=>{axios.get(url+"users/"+user2.id).then(data=>setStatus(data.data.status))},[status])
 
     return(
         <div className="chatPage">
