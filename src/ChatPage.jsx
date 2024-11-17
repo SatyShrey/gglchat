@@ -18,7 +18,7 @@ function ChatPage(){
 
         axios.get(url+"users/"+user2.id).then(data=>setStatus(data.data.status))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[oldMsgArray])
+    },[oldMsgArray,status])
 
     useEffect(()=>{myRef.current.scrollIntoView()},[])
 
