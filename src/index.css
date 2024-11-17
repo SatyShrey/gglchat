@@ -5,7 +5,7 @@
 }
 
 body{
-  background-color: rgb(21, 21, 21);
+  background-color: rgb(31, 31, 31);
 }
 
 button,li{
@@ -151,6 +151,9 @@ header p{
   color: skyblue;
   display: flex;
   align-items: center;
+  background-color: black;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 .chatPage .user2 span{
   color: white;
@@ -168,12 +171,14 @@ header p{
   scrollbar-width: none;
   background-color: white;
   padding: 3px;
-  border-radius: 10px;
 }
 .chatPage .chatInput{
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: black;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 .chatPage .chatInput textarea{
   outline-color: skyblue;
