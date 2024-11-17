@@ -21,7 +21,8 @@ function Home(){
         axios.get(url+'userlist/'+id)
         .then(data=>setLastUsers(data.data))
         .catch(er=>alert(er))
-    },[id, setLastUsers, url])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[setLastUsers])
 
     return(
         <div className="home">
