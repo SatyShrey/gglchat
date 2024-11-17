@@ -28,7 +28,7 @@ function LoginPage() {
             .then((result) => {
                 sessionStorage.setItem('id',result.user.uid);
                 const user=result.user;
-                const newUser={id:user.uid,pic:user.photoURL,email:user.email,status:"online",name:user.displayName}
+                const newUser={id:user.uid,pic:user.photoURL,email:user.email,name:user.displayName}
                 setId(user.uid)
                 setUser(newUser)
                 axios.get(url+"users/"+sessionStorage.getItem('id')).then(data=>{if(data.data==""){
