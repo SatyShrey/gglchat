@@ -13,7 +13,7 @@ function ChatPage(){
 
     useEffect(()=>{
         axios.get(`${url}chats/${user.id}/${user2.id}`)
-        .then(data=>{if(data.data){setOldMsgArray(data.data)}})
+        .then(data=>{setOldMsgArray(data.data)})
         .catch(er=>alert(er.message))
 
         axios.get(url+"users/"+user2.id).then(data=>setStatus(data.data.status))
