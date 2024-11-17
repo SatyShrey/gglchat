@@ -12,18 +12,13 @@ function ChatPage(){
     const[status,setStatus]=useState()
 
     useEffect(()=>{
-        axios.put(url+'updateuser/'+user.id,{status:"online"})
-    },[status])
-
-    useEffect(()=>{
         axios.get(`${url}chats/${user.id}/${user2.id}`)
         .then(data=>{setOldMsgArray(data.data)})
+        .then(()=>{axios.get(url+"users/"+user2.id).then(data=>setStatus(data.data.status))})
         .catch(er=>alert(er.message))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[oldMsgArray])
 
     useEffect(()=>{myRef.current.scrollIntoView()},[])
-    useEffect(()=>{axios.get(url+"users/"+user2.id).then(data=>setStatus(data.data.status))},[status])
 
     return(
         <div className="chatPage">
