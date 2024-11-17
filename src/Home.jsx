@@ -15,7 +15,7 @@ function Home(){
     useEffect(()=>{
         axios.get(url+"users/"+id).then((data)=>{setUser(data.data)})
         axios.put(url+'updateuser/'+id,{status:"online"})
-    },[status])
+    },[])
 
     useEffect(()=>{
         axios.get(url+'userlist/'+id)
