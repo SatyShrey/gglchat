@@ -18,8 +18,8 @@ function Home(){
     },[id,setUser,url])
 
     useEffect(()=>{
-        axios.get(url+'users')
-        .then(data=>setLastUsers(data.data.filter(fd=>fd.uid !==id)))
+        axios.get(url+'userlist/'+id)
+        .then(data=>setLastUsers(data.data))
         .catch(er=>alert(er))
     },[id, setLastUsers, url])
 
@@ -30,9 +30,9 @@ function Home(){
                 axios.get(url+'userbyemail/'+search).then(data=>{
                     if(data.data){
                         setUser2({
-                            uid:data.data.id,
-                            displayName:data.data.nam,
-                            photoURL:data.data.pic,
+                            id:data.data.id,
+                            name:data.data.name,
+                            pic:data.data.pic,
                             email:data.data.email
                         })
                         setPage('chat')
@@ -50,8 +50,8 @@ function Home(){
                     {
                      lastUsers && lastUsers.map((data,index)=> 
                      <li key={index} onClick={()=>{setUser2(data);setPage('chat')}}>
-                          <img src={data.photoURL} />
-                          <p>{data.displayName}<i>{data.email}</i></p>
+                          <img src={data.pic} />
+                          <p>{data.name}<i>{data.email}</i></p>
                     </li> )
                     }
                 </ol>

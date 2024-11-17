@@ -7,7 +7,7 @@ function Header(){
 
     return(
         <header>
-            <h2>GglChats</h2>{user && <><img src={user.photoURL || g} alt="profile-pic" /><p>{user.displayName}</p></>}
+            <h2>GglChats</h2>{user && <><img src={user.pic || g} alt="profile-pic" /><p>{user.name}</p></>}
         </header>
     )
 }

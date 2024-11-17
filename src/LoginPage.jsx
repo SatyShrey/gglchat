@@ -27,10 +27,12 @@ function LoginPage() {
             signInWithPopup(auth, provider)
             .then((result) => {
                 sessionStorage.setItem('id',result.user.uid);
-                setId(result.user.uid)
-                setUser(result.user)
+                const user=result.user;
+                const newUser={id:user.uid,pic:user.photoURL,email:user.email,status:"online",name:user.displayName}
+                setId(user.uid)
+                setUser(newUser)
                 axios.get(url+"users/"+sessionStorage.getItem('id')).then(data=>{if(data.data==""){
-                    axios.post(url+"setuser",result.user).catch((error) => { console.log(error) })
+                    axios.post(url+"setuser",newUser).catch((error) => { console.log(error) })
                 }})
             }).catch((error) => { console.log(error) });
         }catch(error){console.log(error)}
