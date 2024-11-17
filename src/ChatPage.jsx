@@ -14,7 +14,7 @@ function ChatPage(){
     useEffect(()=>{
         axios.get(`${url}chats/${user.uid}/${user2.uid}`)
         .then(data=>{if(data.data){setOldMsgArray(data.data)}})
-        .then(()=>myRef.current.scrollIntoView({ behavior: "smooth" }))
+        .then(()=>myRef.current.scrollIntoView())
         .catch(er=>alert(er.message))
 
         axios.get(url+"users/"+user2.uid).then(data=>setStatus(data.data.status))
