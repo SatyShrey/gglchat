@@ -22,7 +22,7 @@ function Home(){
         .catch(er=>alert(er))
         axios.put(url+'updateuser/'+id,{status:"online"})
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[lastUsers])
+    },[])
 
     return(
         <div className="home">
