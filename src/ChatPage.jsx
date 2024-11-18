@@ -18,7 +18,7 @@ function ChatPage(){
         //update status of users
        axios.get(url+"users/"+user2.id).then(data=>setStatus(data.data.status))
         
-    },[oldMsgArray])
+    },[])
 
     useEffect(()=>{myRef.current.scrollIntoView()},[])
 
