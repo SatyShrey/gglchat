@@ -13,8 +13,8 @@ export function Provider({children}){
         const [user,setUser]=useState({})
         const [user2,setUser2]=useState({})
         const[id,setId]=useState()
-        //const url="https://chatapp-vspu.onrender.com/";
-        const url="http://localhost:6060/"
+        const url="https://chatapp-vspu.onrender.com/";
+        //const url="http://localhost:6060/"
         const [onlineUsers,setOnlineUsers]=useState([])
         const [MsgArray,setMsgArray]=useState([]);
         const [newMsgArray,setNewMsgArray]=useState([])
