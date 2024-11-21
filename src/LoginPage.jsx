@@ -20,7 +20,7 @@ function LoginPage() {
     const app = initializeApp(firebaseConfig)
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider()
-    const { setId,url,g,setUser} = useContext(Context)
+    const { url,g,setPage} = useContext(Context)
 
     function login() {
         try{
@@ -28,13 +28,14 @@ function LoginPage() {
             .then((result) => {
                 sessionStorage.setItem('id',result.user.uid);
                 const user=result.user;
-                const newUser={id:user.uid,pic:user.photoURL,email:user.email,name:user.displayName}
-                setId(user.uid)
-                setUser(newUser)
-                axios.get(url+"users/"+sessionStorage.getItem('id')).then(data=>{if(data.data==""){
-                    axios.post(url+"setuser",newUser).catch((error) => { console.log(error) })
-                }})
-            }).catch((error) => { console.log(error) });
+                const newUser={id:user.uid,pic:user.photoURL,email:user.email,status:"online",name:user.displayName}
+                axios.put(url+"updateuser/"+user.uid,newUser).then(data=>{
+                    if(data.data.modifiedCount===0){
+                        axios.post(url+"setuser",newUser).catch((error) => { console.log(error) })
+                    }
+                })
+            }).then(()=>setPage('home'))
+            .catch((error) => { console.log(error) });
         }catch(error){console.log(error)}
     }
 

@@ -8,23 +8,21 @@ import ChatPage from "./ChatPage"
 
 function App() {
   
-  const{id,page,setId}=useContext(Context)
+  const{page,setPage}=useContext(Context)
 
   useEffect(()=>{
-    setId(sessionStorage.getItem('id'))
-  },[setId])
+    if(sessionStorage.getItem('id')){
+        setPage("home")
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   return(
     <div className="app">
       {page!='chat' && <Header/>}
-      {
-      id ?
-      <>
-        {page==="home" && <Home/>}
-        {page==='chat' && <ChatPage/>}
-      </>
-      :<LoginPage/>
-      }
+      {page=="login" && <LoginPage/>}
+      {page==="home" && <Home/>}
+      {page==='chat' && <ChatPage/>}
     </div>
   )
 }
